@@ -21,7 +21,7 @@ function dateNow(date) {
   return timeNow;
 }
 let now = new Date();
-let currentTime = document.querySelector("h3");
+let currentTime = document.querySelector("#time");
 currentTime.innerHTML = dateNow(now);
 
 function yourPosition(position) {
@@ -58,6 +58,8 @@ function nowWeather(response) {
   let city = response.data.name;
   let yourCity = document.querySelector("#current-city");
   yourCity.innerHTML = city;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML=response.data.weather[0].description;
   let temperature = Math.round(response.data.main.temp);
   let tempNow = document.querySelector("#temp-value");
   tempNow.innerHTML = temperature;

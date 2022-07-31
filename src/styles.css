@@ -2,6 +2,7 @@ body {
   background-color: rgb(255, 255, 255);
   display: block;
   margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
 }
 h1 {
   color: rgb(11, 11, 201);
@@ -27,7 +28,8 @@ li {
   list-style: none;
   text-align: left;
   margin-left: -20px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 .weather-forecast {
   border: 1px solid gray;
@@ -42,7 +44,7 @@ li {
   margin-left: 10px;
 }
 .temperature-today {
-  font-size: 40px;
+  font-size: 48px;
   font-weight: bold;
 }
 .row .col-2 {
@@ -56,4 +58,7 @@ li {
   border-radius: 10px;
   margin-left: 24px;
   margin-bottom: 20px;
+}
+li:first-letter {
+  text-transform: capitalize;
 }
