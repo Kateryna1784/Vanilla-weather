@@ -56,7 +56,10 @@ li {
   height: 64px;
   width: 64px;
 }
+.temperature-today .active:hover {
+  text-decoration: none;
 
+}
 .row .col-2 {
   text-align: center;
   font-size: 18px;
