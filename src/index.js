@@ -39,12 +39,6 @@ let locationButton = document.querySelector("#geoButton");
 locationButton.addEventListener("click", showPosition);
 searchCity("Kyiv");
 
-function searchCity(city) {
-  let apiKey = "7f5a3748cbe33e0ca87d6a6fcae64515";
-  let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(nowWeather);
-}
 
 function submitCity(event) {
   event.preventDefault();
@@ -57,20 +51,36 @@ searchForm.addEventListener("submit", submitCity);
 function nowWeather(response) {
   let city = response.data.name;
   let yourCity = document.querySelector("#current-city");
-  yourCity.innerHTML = city;
   let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML=response.data.weather[0].description;
-  let temperature = Math.round(response.data.main.temp);
+   let temperature = Math.round(response.data.main.temp);
   let tempNow = document.querySelector("#temp-value");
-  tempNow.innerHTML = temperature;
   let wind = Math.round(response.data.wind.speed);
   let windNow = document.querySelector("#wind");
-  windNow.innerHTML = wind;
   let humidity = response.data.main.humidity;
   let humidityNow = document.querySelector("#humidity");
-  humidityNow.innerHTML = humidity;
+  let iconElement = document.querySelector("#icon");
+  
+
+   yourCity.innerHTML = city;
+  descriptionElement.innerHTML=response.data.weather[0].description;
+   tempNow.innerHTML = temperature;
+ windNow.innerHTML = wind;
+humidityNow.innerHTML = humidity;
+iconElement.setAttribute(
+  "src",
+  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+);
+iconElement.setAttribute("alt", response.data.weather[0].description);
+
 }
 
+
+function searchCity(city) {
+  let apiKey = "7f5a3748cbe33e0ca87d6a6fcae64515";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(nowWeather);
+}
 //Feature #2
 //function location(event) {
 //  event.preventDefault();
